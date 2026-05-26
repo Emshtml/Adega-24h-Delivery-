@@ -1,5 +1,8 @@
 🍷 Adega 24h Delivery
 
+> Proprietary Software  
+> Copyright © 2026 Thereza Candida / Emshtml
+
 Sistema premium de delivery de bebidas.
 
 ## Recursos
