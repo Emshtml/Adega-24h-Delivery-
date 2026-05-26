@@ -1,4 +1,35 @@
+/*
+═══════════════════════════════════════════════
+
+  Adega 24h Delivery
+  Proprietary Software
+
+  @author Thereza Candida
+  @organization Emshtml
+  @copyright 2026
+  @license Proprietary
+
+  Copyright (c) 2026 Thereza Candida / Emshtml
+
+  Todos os direitos reservados.
+
+  É proibida a cópia, redistribuição,
+  modificação, revenda ou reutilização
+  parcial ou integral deste sistema sem
+  autorização formal do autor.
+
+═══════════════════════════════════════════════
+*/
+
 const products = [
+
+{
+  name:'Jack Daniels',
+  price:129.90,
+  image:'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=1200&auto=format&fit=crop'
+}
+
+];onst products = [
 
 {
   name:'Jack Daniels',
