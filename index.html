@@ -1,6 +1,89 @@
 <!DOCTYPE html>
-<main id="products"></main>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Adega 24h Delivery</title>
+    <meta name="theme-color" content="#ff1e1e">
+  <meta name="description" content="Adega 24h Delivery - Bebidas geladas com entrega rápida.">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+
+<div id="loading-screen">
+  <div class="loader"></div>
+  <h1>Adega 24h</h1>
+</div>
+
+<div id="age-modal" class="age-modal">
+  <div class="age-box">
+    <h2>🔞 Verificação de idade</h2>
+    <p>Você confirma que possui mais
+      <button onclick="confirmAge()">SIM, TENHO +18</button>
+  </div>
+</div>
+
+<header>
+
+  <div class="logo">
+    🍷 Adega 24h Delivery
+  </div>
+</header>
+
+<section class="hero">
+
+  <div class="hero-overlay">
+
+    <h1>Bebidas Geladas 24 Horas</h1>
+
+    <p>
+      Whisky • Vodka • Gin • Cerveja • Combos
+    </p>
+
+  <div class="header-right">
+
+    <div class="status-online"
+      ● Aberto 24h
+    </div>
+
+    <button class="cart-button" onclick="toggleCart()">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span id="cart-count">0</span>
+    </button>
+
+  </div>
+   </section>
+
+<section class="promo-bar">
+  ⚡ ENTREGA RÁPIDA • PIX • CUPOM: ADEGA10
+</section>
+
+<section class="categories">
+  <button>Whisky</button>
+  <button>Vodka</button>
+  <button>Gin</button>
+  <button>Cerveja</button>
+  <button>Energético</button>
+  <button>Combo</button>
+</section>
+   <section class="search-box">
+  <input
+    type="text"
+    placeholder="Buscar bebida..."
+    id="searchInput"
+    onkeyup="searchProducts()"
+  >
+</section>
+
+<main id="products"></main>
 <aside id="cart" class="cart">
 
   <div class="cart-top">
@@ -14,8 +97,7 @@
   <div id="cart-items"></div>
 
   <div class="delivery-box">
-
-    <label>Bairro</label>
+ <label>Bairro</label>
 
     <select id="bairro" onchange="updateTax()">
       <option value="5">Centro - R$5</option>
@@ -27,8 +109,7 @@
 
   <div class="coupon-box">
     <input type="text" id="coupon" placeholder="Cupom">
-
-    <button onclick="applyCoupon()">
+<button onclick="applyCoupon()">
       Aplicar
     </button>
   </div>
@@ -38,8 +119,7 @@
     <p>Entrega: R$ <span id="delivery-price">5.00</span></p>
 
     <h3>Total: R$ <span id="total">0.00</span></h3>
-
-    <img
+<img
       class="pix-image"
       src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PIX-ADEGA-24H"
     >
@@ -61,9 +141,8 @@ href="https://wa.me/5511999999999"
 class="whatsapp"
 target="_blank">
   <i class="fa-brands fa-whatsapp"></i>
-</a>
+  </a>
 
 <script src="script.js"></script>
-
 </body>
-</html>
+</html>    
