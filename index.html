@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<main id="products"></main>
+
+<aside id="cart" class="cart">
+
+  <div class="cart-top">
+    <h2>Seu Pedido</h2>
+
+    <button onclick="toggleCart()">
+      ✕
+    </button>
+  </div>
+
+  <div id="cart-items"></div>
+
+  <div class="delivery-box">
+
+    <label>Bairro</label>
+
+    <select id="bairro" onchange="updateTax()">
+      <option value="5">Centro - R$5</option>
+      <option value="8">Zona Oeste - R$8</option>
+      <option value="10">Zona Sul - R$10</option>
+    </select>
+
+  </div>
+
+  <div class="coupon-box">
+    <input type="text" id="coupon" placeholder="Cupom">
+
+    <button onclick="applyCoupon()">
+      Aplicar
+    </button>
+  </div>
+
+  <div class="cart-footer">
+
+    <p>Entrega: R$ <span id="delivery-price">5.00</span></p>
+
+    <h3>Total: R$ <span id="total">0.00</span></h3>
+
+    <img
+      class="pix-image"
+      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PIX-ADEGA-24H"
+    >
+
+    <button class="checkout" onclick="checkout()">
+      FINALIZAR PEDIDO
+    </button>
+
+    <button class="clear-cart" onclick="clearCart()">
+      ESVAZIAR CARRINHO
+    </button>
+
+  </div>
+
+</aside>
+
+<a
+href="https://wa.me/5511999999999"
+class="whatsapp"
+target="_blank">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="script.js"></script>
+
+</body>
+</html>
