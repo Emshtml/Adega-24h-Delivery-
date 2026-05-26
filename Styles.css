@@ -1,0 +1,285 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#050505;
+  color:#fff;
+}
+
+#loading-screen{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:99999;
+}
+.loader{
+  width:60px;
+  height:60px;
+  border:5px solid #222;
+  border-top:5px solid #ff1e1e;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+  background:#0d0d0d;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid #1f1f1f;
+}
+
+.logo{
+  color:#ff1e1e;
+  font-size:24px;
+  font-weight:bold;
+}.header-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.status-online{
+  color:#00ff88;
+}
+
+.cart-button{
+  background:#ff1e1e;
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:14px;
+  cursor:pointer;
+}.hero{
+  height:85vh;
+  background:url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop') center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero-overlay{
+  background:rgba(0,0,0,.7);
+  padding:40px;
+  border-radius:25px;
+  text-align:center;
+  width:90%;
+  max-width:700px;
+}
+
+.hero-overlay h1{
+  font-size:52px;
+  margin-bottom:20px;
+}.hero-overlay button{
+  background:#ff1e1e;
+  border:none;
+  padding:16px 28px;
+  color:#fff;
+  border-radius:16px;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+.promo-bar{
+  background:#ff1e1e;
+  padding:14px;
+  text-align:center;
+  font-weight:bold;
+}.categories{
+  display:flex;
+  overflow:auto;
+  gap:10px;
+  padding:20px;
+}
+
+.categories button{
+  background:#121212;
+  border:none;
+  color:#fff;
+  padding:12px 20px;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.search-box{
+  padding:0 20px 20px;
+}.search-box input{
+  width:100%;
+  padding:16px;
+  border-radius:14px;
+  border:none;
+  background:#111;
+  color:#fff;
+}
+
+#products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:#101010;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid #1e1e1e;
+  transition:.3s;
+}.card:hover{
+  font-size:24px;
+  margin-top:10px;
+}
+
+.buy-btn{
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  background:#ff1e1e;
+  border:none;
+  color:#fff;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.cart{
+  position:fixed;
+  top:0;
+  right:-450px;
+  width:420px;
+  max-width:100%;
+  height:100vh;
+  background:#080808;
+  transition:.4s;
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+}
+
+.cart.open{
+  right:0;
+}
+
+.cart-top{
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  border-bottom:1px solid #222;
+}#cart-items{
+  flex:1;
+  overflow:auto;
+  padding:20px;
+}
+
+.cart-item{
+  background:#151515;
+  padding:15px;
+  border-radius:14px;
+  margin-bottom:10px;
+}
+
+.cart-footer{
+  padding:20px;
+  border-top:1px solid #222;
+}
+
+.checkout,
+.clear-cart{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  margin-top:10px;
+}.checkout{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  text-decoration:none;
+  font-size:32px;
+}
+
+.age-modal{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:rgba(0,0,0,.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999999;
+}
+
+.age-box{
+  background:#111;
+  padding:40px;
+  border-radius:24px;
+  text-align:center;
+}
+
+.age-box button{
+  margin-top:20px;
+  padding:14px 24px;
+  border:none;
+  background:#ff1e1e;
+  color:#fff;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.delivery-box,
+.coupon-box{
+  padding:20px;
+}
+.delivery-box select,
+.coupon-box input{
+  width:100%;
+  padding:14px;
+  background:#111;
+  border:none;
+  border-radius:14px;
+  color:#fff;
+  margin-top:10px;
+}
+
+.coupon-box button{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border:none;
+  background:#ff1e1e;
+  color:#fff;
+  border-radius:14px;
+}
+
+@media(max-width:768px){
+
+.hero-overlay h1{
+  font-size:34px;
+}
+
+.cart{
+  width:100%;
+}
+
+}
+
+
