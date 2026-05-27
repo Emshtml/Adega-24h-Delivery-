@@ -1,154 +1,228 @@
- <!DOCTYPE html>
-<!--
- @author Thereza Candida
- @organization Emshtml
- @copyright 2026
- @license Proprietary
+ <!--
+Copyright (c) 2026 Thereza Candida / Emshtml
+
+Todos os direitos reservados.
+
+Este software é protegido por direitos autorais.
+É proibida a cópia, modificação, redistribuição,
+revenda ou utilização comercial sem autorização.
 -->
+
+<!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adega 24h Delivery</title>
 
-  <title>Adega 24h Delivery</title>
-    <meta name="theme-color" content="#ff1e1e">
-  <meta name="description" content="Adega 24h Delivery - Bebidas geladas com entrega rápida.">
+    <link rel="stylesheet" href="style.css">
 
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-<div id="loading-screen">
-  <div class="loader"></div>
-  <h1>Adega 24h</h1>
-</div>
+    <!-- HEADER -->
 
-<div id="age-modal" class="age-modal">
-  <div class="age-box">
-    <h2>🔞 Verificação de idade</h2>
-    <p>Você confirma que possui mais
-      <button onclick="confirmAge()">SIM, TENHO +18</button>
-  </div>
-</div>
+    <header class="header">
 
-<header>
+        <div class="logo-area">
+            <img src="assets/logo.png" class="logo" alt="Adega 24h">
+            <div>
+                <h1>ADEGA 24H</h1>
+                <p>Delivery rápido na sua região</p>
+            </div>
+        </div>
 
-  <div class="logo">
-    🍷 Adega 24h Delivery
-  </div>
-</header>
+        <button class="cart-btn" onclick="abrirCarrinho()">
+            🛒 <span id="cart-count">0</span>
+        </button>
 
-<section class="hero">
+    </header>
 
-  <div class="hero-overlay">
+    <!-- BANNER -->
 
-    <h1>Bebidas Geladas 24 Horas</h1>
+    <section class="banner">
 
-    <p>
-      Whisky • Vodka • Gin • Cerveja • Combos
-    </p>
+        <div class="banner-overlay">
 
-  <div class="header-right">
+            <h2>Bebidas Geladas 24 Horas</h2>
 
-    <div class="status-online"
-      ● Aberto 24h
+            <p>
+                Whisky • Cerveja • Refrigerante • Cigarros • Energéticos
+            </p>
+
+            <a href="#produtos" class="btn-banner">
+                Ver Produtos
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- CATEGORIAS -->
+
+    <section class="categorias">
+
+        <button>Whisky</button>
+        <button>Cervejas</button>
+        <button>Refrigerantes</button>
+        <button>Cigarros</button>
+        <button>Energéticos</button>
+
+    </section>
+
+    <!-- PRODUTOS -->
+
+    <section class="produtos" id="produtos">
+
+        <!-- PRODUTO 1 -->
+
+        <div class="card">
+            <img src="assets/produtos/whisky1.jpg">
+            <h3>Jack Daniel's</h3>
+            <p>Whisky 1L</p>
+            <span>R$ 149,90</span>
+            <button onclick="addCarrinho('Jack Daniels',149.90)">
+                Adicionar
+            </button>
+        </div>
+
+        <!-- PRODUTO 2 -->
+
+        <div class="card">
+            <img src="assets/produtos/whisky2.jpg">
+            <h3>Ballantines</h3>
+            <p>Whisky 1L</p>
+            <span>R$ 119,90</span>
+            <button onclick="addCarrinho('Ballantines',119.90)">
+                Adicionar
+            </button>
+        </div>
+
+        <!-- PRODUTO 3 -->
+
+        <div class="card">
+            <img src="assets/produtos/cerveja1.jpg">
+            <h3>Heineken</h3>
+            <p>Long Neck</p>
+            <span>R$ 8,99</span>
+            <button onclick="addCarrinho('Heineken',8.99)">
+                Adicionar
+            </button>
+        </div>
+
+        <!-- PRODUTO 4 -->
+
+        <div class="card">
+            <img src="assets/produtos/cerveja2.jpg">
+            <h3>Brahma</h3>
+            <p>Lata 350ml</p>
+            <span>R$ 4,99</span>
+            <button onclick="addCarrinho('Brahma',4.99)">
+                Adicionar
+            </button>
+        </div>
+
+        <!-- PRODUTO 5 -->
+
+        <div class="card">
+            <img src="assets/produtos/guarana1.jpg">
+            <h3>Guaraná Antarctica</h3>
+            <p>2 Litros</p>
+            <span>R$ 11,99</span>
+            <button onclick="addCarrinho('Guaraná Antarctica',11.99)">
+                Adicionar
+            </button>
+        </div>
+
+        <!-- PRODUTO 6 -->
+
+        <div class="card">
+            <img src="assets/produtos/cigarro1.jpg">
+            <h3>Marlboro Gold</h3>
+            <p>Maço</p>
+            <span>R$ 14,99</span>
+            <button onclick="addCarrinho('Marlboro Gold',14.99)">
+                Adicionar
+            </button>
+        </div>
+
+        <!-- DUPLIQUE ATÉ 20 PRODUTOS -->
+
+    </section>
+
+    <!-- CARRINHO -->
+
+    <div class="cart-modal" id="cart-modal">
+
+        <div class="cart-content">
+
+            <div class="cart-header">
+                <h2>Seu Pedido</h2>
+
+                <button onclick="fecharCarrinho()">✖</button>
+            </div>
+
+            <div id="cart-items"></div>
+
+            <div class="cart-total">
+                Total: R$ <span id="cart-total">0.00</span>
+            </div>
+
+            <input type="text" id="endereco" placeholder="Digite seu endereço">
+
+            <select id="pagamento">
+                <option value="">Forma de pagamento</option>
+                <option>Pix</option>
+                <option>Dinheiro</option>
+                <option>Cartão</option>
+            </select>
+
+            <!-- PIX -->
+
+            <div class="pix-box">
+
+                <h3>Pagamento via Pix</h3>
+
+                <img src="assets/qrcode-pix.png" class="pix-qrcode">
+
+                <p>Chave Pix:</p>
+
+                <strong>11999999999</strong>
+
+            </div>
+
+            <button class="finish-btn" onclick="finalizarPedido()">
+                Finalizar Pedido
+            </button>
+
+        </div>
+
     </div>
 
-    <button class="cart-button" onclick="toggleCart()">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span id="cart-count">0</span>
-    </button>
+    <!-- FOOTER -->
 
-  </div>
-   </section>
+    <footer>
 
-<section class="promo-bar">
-  ⚡ ENTREGA RÁPIDA • PIX • CUPOM: ADEGA10
-</section>
+        <h2>ADEGA 24H DELIVERY</h2>
 
-<section class="categories">
-  <button>Whisky</button>
-  <button>Vodka</button>
-  <button>Gin</button>
-  <button>Cerveja</button>
-  <button>Energético</button>
-  <button>Combo</button>
-</section>
-   <section class="search-box">
-  <input
-    type="text"
-    placeholder="Buscar bebida..."
-    id="searchInput"
-    onkeyup="searchProducts()"
-  >
-</section>
+        <p>
+            Atendimento 24 horas • Delivery rápido
+        </p>
 
-<main id="products"></main>
-<aside id="cart" class="cart">
+        <small>
+            Copyright © 2026 Thereza Candida / Emshtml
+            Todos os direitos reservados.
+        </small>
 
-  <div class="cart-top">
-    <h2>Seu Pedido</h2>
+    </footer>
 
-    <button onclick="toggleCart()">
-      ✕
-    </button>
-  </div>
+    <script src="script.js"></script>
 
-  <div id="cart-items"></div>
-
-  <div class="delivery-box">
- <label>Bairro</label>
-
-    <select id="bairro" onchange="updateTax()">
-      <option value="5">Centro - R$5</option>
-      <option value="8">Zona Oeste - R$8</option>
-      <option value="10">Zona Sul - R$10</option>
-    </select>
-
-  </div>
-
-  <div class="coupon-box">
-    <input type="text" id="coupon" placeholder="Cupom">
-<button onclick="applyCoupon()">
-      Aplicar
-    </button>
-  </div>
-
-  <div class="cart-footer">
-
-    <p>Entrega: R$ <span id="delivery-price">5.00</span></p>
-
-    <h3>Total: R$ <span id="total">0.00</span></h3>
-<img
-      class="pix-image"
-      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PIX-ADEGA-24H"
-    >
-
-    <button class="checkout" onclick="checkout()">
-      FINALIZAR PEDIDO
-    </button>
-
-    <button class="clear-cart" onclick="clearCart()">
-      ESVAZIAR CARRINHO
-    </button>
-
-  </div>
-
-</aside>
-
-<a
-href="https://wa.me/5511999999999"
-class="whatsapp"
-target="_blank">
-  <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-<script src="script.js"></script>
 </body>
-</html>    
+
+</html>   
