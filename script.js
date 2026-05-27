@@ -89,7 +89,7 @@ function finalizarPedido() {
     mensagem += `%0A📍 Endereço: ${endereco}`;
     mensagem += `%0A💳 Pagamento: ${pagamento}`;
 
-    const telefone = "5511999999999";
+    const telefone = "5511976794749";
 
     const url = `https://wa.me/${telefone}?text=${mensagem}`;
 
