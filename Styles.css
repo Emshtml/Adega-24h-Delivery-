@@ -1,371 +1,212 @@
 /*
-═══════════════════════════════════════════════
+Copyright (c) 2026 Thereza Candida / Emshtml
 
-  Adega 24h Delivery
-  Proprietary Software
-
-  @author Thereza Candida
-  @organization Emshtml
-  @copyright 2026
-  @license Proprietary
-
-  Copyright (c) 2026 Thereza Candida / Emshtml
-
-  Todos os direitos reservados.
-
-═══════════════════════════════════════════════
+Todos os direitos reservados.
 */
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-  background:#050505;
-  color:#fff;
-  overflow-x:hidden;
-}#loading-screen{
-  position:fixed;
-  width:100%;
-  height:100vh;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  z-index:99999;
-}.loader{
-  width:60px;
-  height:60px;
-  border:5px solid #222;
-  border-top:5px solid #ff1e1e;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #080808;
+    color: white;
 }
 
-@keyframes spin{
-  to{
-    transform:rotate(360deg);
-  }header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px;
-  background:#0d0d0d;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  border-bottom:1px solid #1f1f1f;
+.header {
+    background: #111;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo{
-  color:#ff1e1e;
-  font-size:24px;
-  font-weight:bold;
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.header-right{
-  display:flex;
-  align-items:center;
-  gap:15px;
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
 }
 
-.status-online{
-  color:#00ff88;
-}.cart-button{
-  background:#ff1e1e;
-  color:#fff;
-  border:none;
-  padding:12px 18px;
-  border-radius:14px;
-  cursor:pointer;
+.cart-btn {
+    background: #00c853;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-.hero{
-  height:100vh;
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}.hero-bg{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:
-  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
-  url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1800&auto=format&fit=crop');
-  background-size:cover;
-  background-position:center;
-  transform:scale(1.05);
+.banner {
+    height: 500px;
+    background: url('assets/banner.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.hero-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  width:90%;
-  max-width:850px;
-}.badge{
-  display:inline-block;
-  background:#ff1e1e;
-  padding:12px 18px;
-  border-radius:999px;
-  font-weight:bold;
-  margin-bottom:25px;
+.banner-overlay {
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
 }
 
-.hero-content h1{
-  font-size:72px;
-  font-weight:900;
-  line-height:1;
-  margin-bottom:20px;
-  text-shadow:0 0 30px rgba(255,30,30,.5);
+.banner-overlay h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
-.hero-content p{
-  font-size:22px;
-  color:#d1d1d1;
-  margin-bottom:30px;
-}.hero-buttons{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
+.btn-banner {
+    display: inline-block;
+    margin-top: 20px;
+    background: #00c853;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
 }
 
-.hero-buttons button,
-.hero-buttons a{
-  padding:16px 28px;
-  border-radius:18px;
-  border:none;
-  text-decoration:none;
-  font-weight:bold;
-  transition:.3s;
+.categorias {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    overflow-x: auto;
 }
 
-.hero-buttons button{
-  background:#ff1e1e;
-  color:#fff;
+.categorias button {
+    background: #1f1f1f;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
 }
 
-.hero-buttons a{
-  background:#1a1a1a;
-  color:#fff;
-  border:1px solid #333;
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+    padding: 30px;
 }
 
-.hero-buttons button:hover,
-.hero-buttons a:hover{
-  transform:translateY(-4px);
-}.promo-bar{
-  background:#ff1e1e;
-  padding:14px;
-  text-align:center;
-  font-weight:bold;
+.card {
+    background: #151515;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: .3s;
 }
 
-.promo-banner{
-  margin:30px 20px;
-  padding:30px;
-  border-radius:28px;
-  background:
-  linear-gradient(135deg,#ff1e1e,#7a0000);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:20px;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.promo-banner button{
-  background:#fff;
-  color:#000;
-  border:none;
-  padding:14px 22px;
-  border-radius:16px;
-  font-weight:bold;
-}.categories{
-  display:flex;
-  overflow:auto;
-  gap:10px;
-  padding:20px;
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
 }
 
-.categories button{
-  background:#121212;
-  border:none;
-  color:#fff;
-  padding:12px 20px;
-  border-radius:14px;
-  cursor:pointer;
+.card h3 {
+    padding: 10px;
 }
 
-.search-box{
-  padding:0 20px 20px;
+.card p {
+    padding: 0 10px;
+    color: #bbb;
 }
 
-.search-box input{
-  width:100%;
-  padding:16px;
-  border-radius:14px;
-  border:none;
-  background:#111;
-  color:#fff;
-}#products{
-  padding:20px;
-  border-bottom:1px solid #222;
+.card span {
+    display: block;
+    padding: 10px;
+    color: #00e676;
+    font-weight: bold;
 }
 
-.cart-top button{
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:22px;
+.card button {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    background: #00c853;
+    color: white;
+    cursor: pointer;
 }
 
-#cart-items{
-  flex:1;
-  overflow:auto;
-  padding:20px;
+.cart-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
-.cart-item{
-  background:#151515;
-  padding:15px;
-  border-radius:14px;
-  margin-bottom:10px;
+.cart-content {
+    background: #121212;
+    width: 95%;
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 20px;
 }
 
-.delivery-box,
-.coupon-box{
-  padding:20px;
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.delivery-box select,
-.coupon-box input{
-  width:100%;
-  padding:14px;
-  background:#111;
-  border:none;
-  border-radius:14px;
-  color:#fff;
-  margin-top:10px;
-}.coupon-box button{
-  background:#ff1e1e;
-  color:#fff;
-  border-radius:14px;
+.cart-total {
+    margin: 20px 0;
+    font-size: 22px;
 }
 
-.cart-footer{
-  padding:20px;
-  border-top:1px solid #222;
+input,
+select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
 }
 
-.checkout,
-.clear-cart{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:14px;
-  cursor:pointer;
-  margin-top:10px;
+.pix-box {
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.checkout{
-  background:#00c853;
-  color:#fff;
+.pix-qrcode {
+    width: 200px;
+    margin: 20px auto;
 }
 
-.clear-cart{
-  background:#ff1e1e;
-  color:#fff;
+.finish-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    background: #00c853;
+    color: white;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
-.pix-image{
-  width:220px;
-  display:block;
-  margin:20px auto;
-  border-radius:18px;
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #111;
+    margin-top: 40px;
 }
-
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:65px;
-  height:65px;
-  background:#25d366;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#fff;
-  text-decoration:none;
-  font-size:32px;
-  z-index:999;
-}.age-modal{
-  position:fixed;
-  width:100%;
-  height:100vh;
-  background:rgba(0,0,0,.9);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:999999;
-}
-
-.age-box{
-  background:#111;
-  padding:40px;
-  border-radius:24px;
-  text-align:center;
-}
-
-.age-box button{
-  margin-top:20px;
-  padding:14px 24px;
-  border:none;
-  background:#ff1e1e;
-  color:#fff;
-  border-radius:14px;
-  cursor:pointer;
-}
-
-.footer{
-  text-align:center;
-  padding:20px;
-  background:#0a0a0a;
-  color:#777;
-  font-size:14px;
-}
-
-@media(max-width:768px){
-
-.hero-content h1{
-  font-size:42px;
-}
-
-.hero-content p{
-  font-size:18px;
-}
-
-.cart{
-  width:100%;
-}
-
-}
-
-
-
-
-
-
-  
-  
   
   
   
