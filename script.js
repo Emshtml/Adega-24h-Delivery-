@@ -1,263 +1,210 @@
 /*
-═══════════════════════════════════════════════
+Copyright (c) 2026 Thereza Candida / Emshtml
 
-  Adega 24h Delivery
-  Proprietary Software
-
-  @author Thereza Candida
-  @organization Emshtml
-  @copyright 2026
-  @license Proprietary
-
-  Copyright (c) 2026 Thereza Candida / Emshtml
-
-  Todos os direitos reservados.
-
-  É proibida a cópia, redistribuição,
-  modificação, revenda ou reutilização
-  parcial ou integral deste sistema sem
-  autorização formal do autor.
-
-═══════════════════════════════════════════════
+Todos os direitos reservados.
 */
 
-const products = [
-
-{
-  name:'Jack Daniels',
-  price:129.90,
-  image:'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=1200&auto=format&fit=crop'
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-];onst products = [
-
-{
-  name:'Jack Daniels',
-  price:129.90,
-  image:'https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=1200&auto=format&fit=crop'
-},
-
-{
-  name:'Red Label',
-  price:99.90,
-  image:'https://images.unsplash.com/photo-1582819509237-df9c0f1a8b4b?q=80&w=1200&auto=format&fit=crop'
-},
-
-{
-  name:'Smirnoff Vodka',
-  price:54.90,
-  image:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop'
-},
-
-{
-  name:'Combo Gin + Energético',
-  price:89.90,
-  image:'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1200&auto=format&fit=crop'
-},
-
-{
-  name:'Heineken Pack',
-  price:34.90,
-  image:'https://images.unsplash.com/photo-1608270586620-248524c67de9?q=80&w=1200&auto=format&fit=crop'
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #080808;
+    color: white;
 }
 
-];
-
-const productsContainer = document.getElementById('products');
-const cartItems = document.getElementById('cart-items');
-const totalElement = document.getElementById('total');
-const cartCount = document.getElementById('cart-count');
-const deliveryPrice = document.getElementById('delivery-price');
-
-let cart = [];
-let delivery = 5;
-let discount = 0;
-
-window.onload = ()=>{
-
-  renderProducts(products);
-
-  setTimeout(()=>{
-    document.getElementById('loading-screen').style.display='none';
-  },1800);
-}  setTimeout(()=>{
-function renderProducts(items){
-
-  productsContainer.innerHTML='';
-
-  items.forEach((product,index)=>{
-
-    productsContainer.innerHTML += `
-
-    <div class="card">
-
-      <img src="${product.image}">
-
-      <div class="card-content">
-
-        <h3>${product.name}</h3>
-
-        <p class="price">
-          R$ ${product.price.toFixed(2)}
-        </p>
-
-        <button class="buy-btn"
-        onclick="addToCart(${index})">
-          Adicionar
-        </button>
-
-      </div>
-
-    </div>
-
-    `;
-
-  });
-
-}function addToCart(index){
-
-  cart.push(products[index]);
-
-  updateCart();
-
+.header {
+    background: #111;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-function updateCart(){
-
-  cartItems.innerHTML='';
-
-  let total = 0;
-
-  cart.forEach(item=>{
-
-    total += item.price;
-
-    cartItems.innerHTML += `
-
-    <div class="cart-item">
-      <h4>${item.name}</h4>
-      <p>R$ ${item.price.toFixed(2)}</p>
-    </div>
-
-    `;
-
-  });
-
-  total = total + delivery - discount;
-
-  totalElement.innerText = total.toFixed(2);
-
-  cartCount.innerText = cart.length;
-
-}function toggleCart(){
-
-  document.getElementById('cart')
-  .classList.toggle('open');
-
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-function clearCart(){
-
-  cart=[];
-
-  updateCart();
-
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
 }
 
-function checkout(){
-
-  if(cart.length===0){
-    alert('Carrinho vazio');
-    return;
-  }let message='🍷 *Pedido Adega 24h* %0A%0A';
-
-  let total=0;
-
-  cart.forEach(item=>{
-
-    message += `• ${item.name} - R$ ${item.price.toFixed(2)}%0A`;
-
-    total += item.price;
-
-  });
-
-  total = total + delivery - discount;
-
-  message += `%0A🚚 Entrega: R$ ${delivery.toFixed(2)}`;
-  message += `%0A💰 Total: R$ ${total.toFixed(2)}`;
-
-  window.open(`https://wa.me/5511999999999?text=${message}`,'_blank');
-
-}  message += `%0A💰 Total: R$ ${total.toFixed(2)}`;
-
-  window.open(`https://wa.me/5511999999999?text=${message}`,'_blank');
-
+.cart-btn {
+    background: #00c853;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-function scrollMenu(){
-
-  document.getElementById('products')
-  .scrollIntoView({
-    behavior:'smooth'
-  });
-
+.banner {
+    height: 500px;
+    background: url('assets/banner.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-function confirmAge(){
-
-  document.getElementById('age-modal')
-  .style.display='none';
-
-}function updateTax(){
-
-  delivery = parseFloat(
-    document.getElementById('bairro').value
-  );
-
-  deliveryPrice.innerText = delivery.toFixed(2);
-
-  updateCart();
-
+.banner-overlay {
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
 }
 
-function applyCoupon(){
-
-  const coupon = document.getElementById('coupon').value;
-
-  if(coupon==='ADEGA10'){
-
-    discount = 10;
-
-    alert('Cupom aplicado');
-
-  }else{
-
-    discount = 0;
-
-    alert('Cupom inválido');
-
-  }
-
-  updateCart();
-
-}function searchProducts(){
-
-  const value = document
-  .getElementById('searchInput')
-  .value.toLowerCase();
-
-  const filtered = products.filter(product=>
-    product.name.toLowerCase().includes(value)
-  );
-
-  renderProducts(filtered);
-
+.banner-overlay h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
-if('serviceWorker' in navigator){
+.btn-banner {
+    display: inline-block;
+    margin-top: 20px;
+    background: #00c853;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+}
 
-  navigator.serviceWorker
-  .register('sw.js');
+.categorias {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    overflow-x: auto;
+}
 
+.categorias button {
+    background: #1f1f1f;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.card {
+    background: #151515;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card h3 {
+    padding: 10px;
+}
+
+.card p {
+    padding: 0 10px;
+    color: #bbb;
+}
+
+.card span {
+    display: block;
+    padding: 10px;
+    color: #00e676;
+    font-weight: bold;
+}
+
+.card button {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    background: #00c853;
+    color: white;
+    cursor: pointer;
+}
+
+.cart-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-content {
+    background: #121212;
+    width: 95%;
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cart-total {
+    margin: 20px 0;
+    font-size: 22px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
+}
+
+.pix-box {
+    background: #1b1b1b;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pix-qrcode {
+    width: 200px;
+    margin: 20px auto;
+}
+
+.finish-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    background: #00c853;
+    color: white;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #111;
+    margin-top: 40px;
 }
 
