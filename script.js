@@ -4,207 +4,94 @@ Copyright (c) 2026 Thereza Candida / Emshtml
 Todos os direitos reservados.
 */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+let carrinho = [];
+
+function addCarrinho(nome, preco) {
+
+    carrinho.push({
+        nome,
+        preco
+    });
+
+    atualizarCarrinho();
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #080808;
-    color: white;
+function atualizarCarrinho() {
+
+    const cartItems = document.getElementById("cart-items");
+
+    const cartCount = document.getElementById("cart-count");
+
+    const cartTotal = document.getElementById("cart-total");
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+    carrinho.forEach(item => {
+
+        total += item.preco;
+
+        cartItems.innerHTML += `
+            <div class="item-cart">
+                <p>${item.nome}</p>
+                <span>R$ ${item.preco.toFixed(2)}</span>
+            </div>
+        `;
+    });
+
+    cartCount.innerText = carrinho.length;
+
+    cartTotal.innerText = total.toFixed(2);
 }
 
-.header {
-    background: #111;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+function abrirCarrinho() {
+
+    document.getElementById("cart-modal").style.display = "flex";
 }
 
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+function fecharCarrinho() {
+
+    document.getElementById("cart-modal").style.display = "none";
 }
 
-.logo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-}
+function finalizarPedido() {
 
-.cart-btn {
-    background: #00c853;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 12px;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
+    const endereco = document.getElementById("endereco").value;
 
-.banner {
-    height: 500px;
-    background: url('assets/banner.jpg') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    const pagamento = document.getElementById("pagamento").value;
 
-.banner-overlay {
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-}
+    if (carrinho.length === 0) {
 
-.banner-overlay h2 {
-    font-size: 50px;
-    margin-bottom: 20px;
-}
+        alert("Seu carrinho está vazio.");
 
-.btn-banner {
-    display: inline-block;
-    margin-top: 20px;
-    background: #00c853;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 10px;
-    text-decoration: none;
-}
+        return;
+    }
 
-.categorias {
-    display: flex;
-    gap: 10px;
-    padding: 20px;
-    overflow-x: auto;
-}
+    if (endereco === "") {
 
-.categorias button {
-    background: #1f1f1f;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 30px;
-}
+        alert("Digite seu endereço.");
 
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 20px;
-    padding: 30px;
-}
+        return;
+    }
 
-.card {
-    background: #151515;
-    border-radius: 20px;
-    overflow: hidden;
-    transition: .3s;
-}
+    let mensagem = "🍻 *NOVO PEDIDO - ADEGA 24H* %0A%0A";
 
-.card:hover {
-    transform: translateY(-5px);
-}
+    carrinho.forEach(item => {
 
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
+        mensagem += `• ${item.nome} - R$ ${item.preco.toFixed(2)} %0A`;
+    });
 
-.card h3 {
-    padding: 10px;
-}
+    const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
 
-.card p {
-    padding: 0 10px;
-    color: #bbb;
-}
+    mensagem += `%0A🛒 Itens: ${carrinho.length}`;
+    mensagem += `%0A💰 Total: R$ ${total.toFixed(2)}`;
+    mensagem += `%0A📍 Endereço: ${endereco}`;
+    mensagem += `%0A💳 Pagamento: ${pagamento}`;
 
-.card span {
-    display: block;
-    padding: 10px;
-    color: #00e676;
-    font-weight: bold;
-}
+    const telefone = "5511999999999";
 
-.card button {
-    width: 100%;
-    border: none;
-    padding: 15px;
-    background: #00c853;
-    color: white;
-    cursor: pointer;
-}
+    const url = `https://wa.me/${telefone}?text=${mensagem}`;
 
-.cart-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
+    window.open(url, "_blank");
 }
-
-.cart-content {
-    background: #121212;
-    width: 95%;
-    max-width: 500px;
-    padding: 25px;
-    border-radius: 20px;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.cart-total {
-    margin: 20px 0;
-    font-size: 22px;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    border: none;
-}
-
-.pix-box {
-    background: #1b1b1b;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.pix-qrcode {
-    width: 200px;
-    margin: 20px auto;
-}
-
-.finish-btn {
-    width: 100%;
-    padding: 18px;
-    border: none;
-    background: #00c853;
-    color: white;
-    font-size: 18px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    background: #111;
-    margin-top: 40px;
-}
-
